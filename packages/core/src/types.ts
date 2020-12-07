@@ -20,6 +20,7 @@ type Colors = {
   outline: HexColor;
   watch?: {
     background: HexColor;
+    foreground: HexColor;
   };
 };
 

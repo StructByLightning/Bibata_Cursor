@@ -13,7 +13,8 @@ export interface Cursors {
 
 export const keyColors: Colors = {
   watch: {
-    background: "#FF0000"
+    background: "#FF0000",
+    foreground: "#FFFF00"
   },
   base: "#00FF00",
   outline: "#0000FF"
@@ -77,7 +78,6 @@ export default class ColoredSvgGenerator {
 
       try {
         // === trying to replace `watch` color ===
-
         if (!this.themeConfig.colors.watch?.background) {
           throw new Error("");
         }
@@ -94,6 +94,27 @@ export default class ColoredSvgGenerator {
           this.themeConfig.colors.base
         );
       }
+
+      // replace foreground
+      try {
+        // === trying to replace `watch` color ===
+        if (!this.themeConfig.colors.watch?.foreground) {
+          throw new Error("");
+        }
+        const { foreground: f } = this.themeConfig.colors.watch;
+        content = content.replace(
+          new RegExp(keyColors.watch!.foreground, "ig"),
+          f
+        ); // Watch Foreground
+      } catch (error) {
+        // === on error => replace `watch` color as `base` ===
+
+        content = content.replace(
+          new RegExp(keyColors.watch!.foreground, "ig"),
+          this.themeConfig.colors.base
+        );
+      }
+
 
       cursors[`${path.basename(cursor, ".svg")}`] = { content };
     });

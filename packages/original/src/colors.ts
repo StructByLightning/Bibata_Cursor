@@ -11,16 +11,25 @@ const themeColors: ThemeColors = {
     base: amber,
     outline: white,
     watch: {
-      background: richBlack
+      background: richBlack,
+      foreground: amber
     }
   },
   Classic: {
     base: black,
-    outline: white
+    outline: white,
+    watch: {
+      background: black,
+      foreground: white,
+    }
   },
   Ice: {
     base: white,
-    outline: black
+    outline: black,
+    watch: {
+      background: white,
+      foreground: black,
+    }
   }
 };
 
